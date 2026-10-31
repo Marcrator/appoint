@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Appointment and Scheduling System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Login and Signup navigation: hidden after login -->
+  <div class="view-switcher-bar" id="authSwitcher">
+    <span class="switcher-label">
+      <i class="fa-solid fa-layer-group"></i> Account Access
+    </span>
+    <div class="switcher-buttons">
+      <button class="switcher-btn active" data-target="login">Login</button>
+      <button class="switcher-btn" data-target="signup">Sign Up</button>
+    </div>
+  </div>
+
+  <div class="app-viewport">
+
+    <!-- LOGIN -->
+    <section id="login-view" class="view-screen active">
+      <div class="auth-layout">
+        <div class="branding-header">
+          <div class="brand-icon-large">
+            <i class="fa-regular fa-calendar-check"></i>
+          </div>
+          <h1 class="brand-title">Online Appointment<br>and Scheduling System</h1>
+          <p class="brand-subtitle">Book. Manage. Stay on Schedule.</p>
+        </div>
+
+        <div class="auth-card">
+          <h2>Welcome Back!</h2>
+          <p class="card-subtitle">Log in to your account to continue.</p>
+
+          <div id="loginError" class="error-banner" hidden></div>
+
+          <form id="loginForm">
+            <div class="form-group">
+              <div class="input-wrapper">
+                <i class="fa-regular fa-user input-icon"></i>
+                <input id="loginUsername" type="text" placeholder="Email or Username" autocomplete="username" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-wrapper">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password" required>
+                <button type="button" class="toggle-password" data-for="loginPassword" aria-label="Show password">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-container">
+                <input type="checkbox" id="rememberMe">
+                Remember me
+              </label>
+              <a href="#" id="forgotPassword" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+
+            <div class="divider"><span>or</span></div>
+
+            <button type="button" class="btn btn-outline btn-block switch-to-signup">
+              <i class="fa-regular fa-user"></i> Create an Account
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGN UP -->
+    <section id="signup-view" class="view-screen">
+      <div class="auth-layout">
+        <div class="branding-header">
+          <div class="brand-icon-large">
+            <i class="fa-regular fa-calendar-check"></i>
+          </div>
+          <h1 class="brand-title">Online Appointment<br>and Scheduling System</h1>
+          <p class="brand-subtitle">Book. Manage. Stay on Schedule.</p>
+        </div>
+
+        <div class="auth-card">
+          <h2>Create Account</h2>
+          <p class="card-subtitle">Register to manage your appointments online.</p>
+
+          <div id="signupError" class="error-banner" hidden></div>
+
+          <form id="signupForm">
+            <div class="form-group">
+              <div class="input-wrapper">
+                <i class="fa-regular fa-id-card input-icon"></i>
+                <input id="fullName" type="text" placeholder="Full Name" autocomplete="name" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-wrapper">
+                <i class="fa-regular fa-envelope input-icon"></i>
+                <input id="signupEmail" type="email" placeholder="Email Address" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-wrapper">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input id="signupPassword" type="password" placeholder="Password (min 6 chars)" minlength="6" autocomplete="new-password" required>
+                <button type="button" class="toggle-password" data-for="signupPassword" aria-label="Show password">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+
+            <div class="divider"><span>or</span></div>
+
+            <button type="button" class="btn btn-outline btn-block switch-to-login">
+              <i class="fa-solid fa-arrow-left"></i> Back to Login
+            </button>
+          </form>
+
+          <div class="card-footer">
+            Already registered? <a href="#" class="switch-to-login">Log In</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROTECTED DASHBOARD -->
+    <section id="dashboard-view" class="view-screen">
+      <div class="dashboard-layout">
+
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <div class="logo-icon"><i class="fa-regular fa-calendar-check"></i></div>
+            <span class="logo-text">Appointment System</span>
+          </div>
+
+          <nav class="sidebar-nav">
+            <ul>
+              <li class="active"><a href="#" class="nav-item-btn" data-page="dashboard"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
+              <li><a href="#" class="nav-item-btn" data-page="book"><i class="fa-regular fa-calendar-plus"></i><span>Book Appointment</span></a></li>
+              <li><a href="#" class="nav-item-btn" data-page="appointments"><i class="fa-regular fa-calendar"></i><span>My Appointments</span></a></li>
+              <li><a href="#" class="nav-item-btn" data-page="history"><i class="fa-regular fa-clock"></i><span>Appointment History</span></a></li>
+              <li><a href="#" class="nav-item-btn" data-page="reports"><i class="fa-solid fa-chart-column"></i><span>Reports</span></a></li>
+            </ul>
+          </nav>
+
+          <div class="sidebar-footer">
+            <a href="#" class="nav-item-btn" data-page="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+          </div>
+        </aside>
+
+        <main class="dashboard-main">
+          <header class="top-header">
+            <div class="search-bar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input id="searchInput" type="search" placeholder="Search appointments...">
+            </div>
+
+            <div class="user-profile">
+              <button type="button" class="icon-btn" id="bellBtn" aria-label="Notifications">
+                <i class="fa-regular fa-bell"></i>
+              </button>
+              <div class="profile-info">
+                <div class="avatar" id="profileInitials">SR</div>
+                <div class="profile-text">
+                  <span class="user-name" id="displayUsername">User</span>
+                  <span class="user-role">Student</span>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- All dashboard subpages are rendered inside this area -->
+          <div class="dashboard-body" id="pageContent"></div>
+        </main>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
